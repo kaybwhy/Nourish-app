@@ -9,8 +9,8 @@
 <script>
 const $=s=>document.querySelector(s);const iso=()=>new Date().toLocaleDateString('en-CA');const dayName=d=>new Date(d+'T12:00:00').toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'});
 // Public browser settings only. Never put a Supabase service-role key here.
-const SUPABASE_URL='PASTE_YOUR_SUPABASE_PROJECT_URL_HERE';const SUPABASE_ANON_KEY='PASTE_YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY_HERE';const ADMIN_EMAIL='YOUR_ADMIN_EMAIL_HERE'.toLowerCase();
-const cloudReady=()=>window.supabase&&SUPABASE_URL.startsWith('https://')&&!SUPABASE_URL.includes('PASTE_')&&!SUPABASE_ANON_KEY.includes('PASTE_');const sb=cloudReady()?window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
+const SUPABASE_URL='';const SUPABASE_ANON_KEY='sb_publishable_0Pe3UrH-spbx6xGohi2I3A_vgjRgeYj';const ADMIN_EMAIL='killian.kb@outlook.ie'.toLowerCase();
+const cloudReady=()=>window.supabase&&SUPABASE_URL.startsWith('https://wexgwtubjsjhxvtntpfy.supabase.co')&&!SUPABASE_URL.includes('PASTE_')&&!SUPABASE_ANONKEY.includes('PASTE_');const sb=cloudReady()?window.supabase.createClient():null;
 const defaults=()=>({profile:{name:'',sex:'male',age:22,height:178,weight:88,goal:'maintain',activity:1.2},target:2200,logs:{},habits:[{id:'water',name:'Drink enough water',emoji:'💧'},{id:'food',name:'Eat regular meals',emoji:'🥣'},{id:'walk',name:'Get some movement',emoji:'🚶'},{id:'sleep',name:'Wind down for sleep',emoji:'🌙'}],habitLogs:{}});
 let db;try{db=JSON.parse(localStorage.getItem('nourishDB'))||defaults()}catch(e){db=defaults()}let tab='today';let selectedDate=iso();let currentUser=null;let legacyMigrated=false;let syncTimer=null;let cloudBusy=false;let authMode='login';let authMessage='';const legacyDb=(()=>{try{return JSON.parse(localStorage.getItem('nourishDB'))}catch(e){return null}})();
 function storageKey(){return currentUser?'nourishDB_'+currentUser.id:'nourishDB'}
